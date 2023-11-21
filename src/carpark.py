@@ -38,8 +38,18 @@ class Carpark:
 
     def update_displays(self):
         #when the carpark needs to update the displays. It will iterate through the displays and call their update method.
+        data = {"available_bays": self.available_bays, "temperature": 25}
+        #update to the actual temperature
         for display in self.displays:
             display.update()
+
+    @property
+    #property - access like attribute
+    def available_bays(self):
+        return max(0, self.capacity - len(self.plates))
+    # max capacity minus current number of cars in carpark
+    # if the number of plates exceeds the capacity, will return 0
+
 
 
 

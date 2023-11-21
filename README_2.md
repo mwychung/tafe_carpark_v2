@@ -421,6 +421,7 @@ After you have implemented the required code, commit your changes to the local r
    git commit -m "Added a register method to the carpark class"
    git tag -a "s3" -m "Added a register method to the carpark class"
    ```
+![img_4.png](img_4.png)
 
 #### Add and remove car methods
 
