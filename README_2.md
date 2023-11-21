@@ -522,6 +522,7 @@ Add a screenshot of the GitHub repository after pushing the tag, showing the Car
 
 ```text
 ![Added methods to the carpark class](images/methods-to-carpark.png)
+![img_5.png](img_5.png)
 ```
 
 Answer the following questions:
@@ -529,10 +530,20 @@ Answer the following questions:
 ```text
    1. Which class is responsible for each of the following pieces of information (and why)?
       - The number of available bays
+      Carpark class is responsible for the number of available bays as its calculation is based on the carpark capacity and the current number of car in carpark.
+      
       - The current temperature
+      Depends
+      to be updated 
+      
       - The time
+      Carpark class can hold the responsible for the time by import time in carpark.py.
+      (reference:https://www.programiz.com/python-programming/time)
    2. What is the difference between an attribute and a property?
+        to be updated
    3. Why do you think we used a dictionary to hold the data we passed the display? List at least one advantage and one disadvantage of this approach
+        to be updated
+
 ```
 
 #### Add a detect vehicle method to the Sensor class
