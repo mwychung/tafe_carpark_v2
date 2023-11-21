@@ -17,13 +17,13 @@ class Carpark:
     def __str__(self):
         return f"Carpark at {self.location}, with {self.capacity} bays."
 
-    def register(self, object):  # allow the carpark to register sensors and displays
-        if isinstance(object, Sensor):
+    def register(self, new_object):  # allow the carpark to register sensors and displays
+        if isinstance(new_object, Sensor):
             self.sensors.append(
-                object)  # it checks whether this object is a type of sensor class, if yes, register to the list of sensors in carpark class
-        elif isinstance(object, Display):
+                new_object)  # it checks whether this object is a type of sensor class, if yes, register to the list of sensors in carpark class
+        elif isinstance(new_object, Display):
             self.displays.append(
-                object)  # it checks whether this object is a type of display class, if yes, register to the list of displays in carpark class
+                new_object)  # it checks whether this object is a type of display class, if yes, register to the list of displays in carpark class
         else:
             raise TypeError("Object must be a Sensor or Display.")
 
