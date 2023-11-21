@@ -16,3 +16,4 @@ class EntrySensor(Sensor):
 class ExitSensor(Sensor):
     def detect_vehicle_exit(self):
         pass
+

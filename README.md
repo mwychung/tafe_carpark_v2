@@ -294,6 +294,4 @@ Ensure that you have completed the previous steps and created the appropriate ta
 s1
 s2
 ```
-## TO BE CONTINUED
-
-Additional content to be added shortly
+![img_2.png](img_2.png)
