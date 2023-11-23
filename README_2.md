@@ -576,7 +576,7 @@ classDiagram
 1. Open `sensor.py`, add the following import statement to the top of the file:
 
    ```python
-   from carpark import Carpark
+   from car_park import Carpark
    from abc import ABC, abstractmethod
    ```
 
@@ -653,6 +653,6 @@ Probably a good idea to commit to GitHub now:
    ```bash
    git push --tags
    ```
-
+![img_6.png](img_6.png)
 -----------
 TO BE CONTINUED...
