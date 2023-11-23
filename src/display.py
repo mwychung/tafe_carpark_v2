@@ -1,5 +1,3 @@
-from car_park import CarPark
-
 
 class Display:
 

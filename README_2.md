@@ -655,4 +655,149 @@ Probably a good idea to commit to GitHub now:
    ```
 ![img_6.png](img_6.png)
 -----------
+Taking stock
+Let's take stock of what we've done up till now. Diagrammatically, here is a representation of all the classes, methods, and attributes we have implemented so far in the project:
+classDiagram
+    class CarPark {
+        -location: string
+        -capacity: int
+        -plates: str[]
+        -sensors: Sensor[]
+        -displays: Display[]
+        __init__(location, capacity, plates, sensors, displays)
+        register(component: Sensor | Display)
+        add_car(plate: string)
+        remove_car(plate: string)
+        update_displays()
+        property: available_bays: int 
+    }
+
+    class Sensor {
+        <<abstract>>
+        -id: int
+        -is_active: bool
+        -car_park: CarPark
+        __init__(id, is_active, car_park)
+        -scan_plate(): string
+        detect_vehicle()
+        update_car_park(plate: string)
+    }
+
+    class EntrySensor {
+        inherit Sensor
+        update_car_park(plate: string)
+        
+    }
+
+    class ExitSensor {
+        inherit Sensor
+        +update_car_park(plate: string)
+        -scan_plate() string
+    }
+
+    class Display {
+        -id: int
+        -message: string
+        -is_on: bool
+        -car_park: CarPark
+        __init__(id, message, is_on, car_park)
+        update(data: dictionary)
+    }
+
+    CarPark "1" o-- "0..*" Display : contains
+    CarPark "1" *-- "0..*" Sensor : contains
+    Sensor <|-- EntrySensor
+    Sensor <|-- ExitSensor 
+
+
+Take a moment to review the diagram and ensure you have implemented the classes, methods, and attributes correctly. You're about to find out if you haven't!
+
+Implement unit tests
+The first set of unit tests are given to you below. We use the unittest module to create unit tests. The unittest module provides a base class, TestCase, which we can use to create test cases. We can then use the assert methods to test the behaviour of our classes.
+
+CarPark unit tests
+The following unit tests test the CarPark class. They test the __init__ method, the add_car method, and the remove_car method. Notice that we use the setUp method to create a CarPark object before each test. This ensures that each test starts with a fresh CarPark object.
+
+import unittest
+from car_park import CarPark
+
+class TestCarPark(unittest.TestCase):
+      def setUp(self):
+         self.car_park = CarPark("123 Example Street", 100)
+   
+      def test_car_park_initialized_with_all_attributes(self):
+         self.assertIsInstance(self.car_park, CarPark)
+         self.assertEqual(self.car_park.location, "123 Example Street")
+         self.assertEqual(self.car_park.capacity, 100)
+         self.assertEqual(self.car_park.plates, [])
+         self.assertEqual(self.car_park.sensors, [])
+         self.assertEqual(self.car_park.displays, [])
+         self.assertEqual(self.car_park.available_bays, 100)
+   
+      def test_add_car(self):
+         self.car_park.add_car("FAKE-001")
+         self.assertEqual(self.car_park.plates, ["FAKE-001"])
+         self.assertEqual(self.car_park.available_bays, 99)
+   
+      def test_remove_car(self):
+         self.car_park.add_car("FAKE-001")
+         self.car_park.remove_car("FAKE-001")
+         self.assertEqual(self.car_park.plates, [])
+         self.assertEqual(self.car_park.available_bays, 100)
+
+      def test_overfill_the_car_park(self):
+         for i in range(100):
+            self.car_park.add_car(f"FAKE-{i}")
+         self.assertEqual(self.car_park.available_bays, 0)
+         self.car_park.add_car("FAKE-100")
+         # Overfilling the car park should not change the number of available bays
+         self.assertEqual(self.car_park.available_bays, 0)
+
+         # Removing a car from an overfilled car park should not change the number of available bays   
+         self.car_park.remove_car("FAKE-100")
+         self.assertEqual(self.car_park.available_bays, 0)
+
+      def test_removing_a_car_that_does_not_exist(self):
+         with self.assertRaises(ValueError):
+            self.car_park.remove_car("NO-1")
+         
+
+if __name__ == "__main__":
+   unittest.main()
+
+Create or open the Python file in the tests directory called test_car_park.py and paste the contents of the previous unit test into it.
+
+Commit your changes to the local repository. Do not tag the commit. It is an interim commit.
+
+git add .
+git commit -m "Added unit tests for the car park class"
+Run the above unit tests in PyCharm.
+
+Fix any errors you encounter.
+
+Evidencing:
+
+Add a screenshot of the output of the unit tests. If any failed, add a screenshot of the error message and a screenshot after you have fixed the errors:
+
+![Unit tests](images/unit-tests.png)
+
+Run first unit test:
+![img_7.png](img_7.png)
+
+issue: Circular import creates an issue
+Update: "from car_park import CarPark" in sensor.py and display.py are removed
+
+Run second unit test:
+![img_8.png](img_8.png)
+
+Issue: Circular import error has been removed
+Issue: There is an error for testing the test_removing_a_car_that_does_not_exist
+Update: Add else condition (raise ValueError) under remove_car.
+![img_9.png](img_9.png)
+
+Commit your changes to the local repository. Tag the commit with s6 so your lecturer can find it:
+
+Push the tag to the remote repository:
+
+git push --tags
 TO BE CONTINUED...
