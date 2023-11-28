@@ -38,7 +38,7 @@ class CarPark:
             self.plates.remove(plate)
             self.update_displays()
         else:
-            raise ValueError("Car plate {plate} does not exist.")
+            raise ValueError(f"Car plate {plate} does not exist.")
 
     # when the car park needs to update the displays. It will iterate through the displays and call their update method.
 
@@ -47,7 +47,7 @@ class CarPark:
                 "time": time.strftime("%Y/%m/%d, %H:%M:%S", time.localtime())}
         # update to the actual temperature
         for display in self.displays:
-            display.update()
+            display.update(data)
 
     @property
     # property - access like attribute

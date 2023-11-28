@@ -784,20 +784,86 @@ Add a screenshot of the output of the unit tests. If any failed, add a screensho
 Run first unit test:
 ![img_7.png](img_7.png)
 
-issue: Circular import creates an issue
-Update: "from car_park import CarPark" in sensor.py and display.py are removed
+test_car_park_issue_1: Circular import creates an issue
+test_car_park_update_1: "from car_park import CarPark" in sensor.py and display.py are removed
 
 Run second unit test:
 ![img_8.png](img_8.png)
 
-Issue: Circular import error has been removed
-Issue: There is an error for testing the test_removing_a_car_that_does_not_exist
-Update: Add else condition (raise ValueError) under remove_car.
+test_car_park_issue_2: Circular import error has been removed; There is an error for testing the test_removing_a_car_that_does_not_exist
+test_car_park_update_2: Add else condition (raise ValueError) under remove_car.
 ![img_9.png](img_9.png)
 
 Commit your changes to the local repository. Tag the commit with s6 so your lecturer can find it:
 
 Push the tag to the remote repository:
+
+git push --tags
+
+Display unit tests
+Next, we'll create tests for the Display class. These tests will test the __init__ method and the update method.
+
+1. In the tests/ directory, create a new Python file called test_display.py. Notice that tests are usually suffixed or prefixed with test. Typically, a unit applies to a class. So the unit tests for the Display class are in the test_display.py file.
+
+2. Add the following import statement to the top of the file:
+
+import unittest
+from display import Display
+from car_park import CarPark
+
+3. Create a TestDisplay class that inherits from unittest.TestCase.
+
+4. Create a setUp method that creates a Display object and a CarPark object. The Display object should have the following attributes:
+
+id: 1
+message: "Welcome to the car park"
+is_on: True
+car_park: CarPark(...)
+
+5. Create a test_display_initialized_with_all_attributes method. This method should test that the Display object was initialized with the correct attributes. Here is a sample implementation:
+
+# ... inside the TestDisplay class
+def test_display_initialized_with_all_attributes(self):
+   self.assertIsInstance(self.display, Display)
+   self.assertEqual(self.display.id, 1)
+   self.assertEqual(self.display.message, "Welcome to the car park")
+   self.assertEqual(self.display.is_on, True)
+   self.assertIsInstance(self.display.car_park, CarPark)
+
+6.  Now create a test_update method. This method should test that the update method updates the message attribute. Here is a sample implementation:
+
+# ... inside the TestDisplay class
+def test_update(self):
+   self.display.update({"message": "Goodbye"})
+   self.assertEqual(self.display.message, "Goodbye")
+
+7. Run the unit test in PyCharm.
+
+8. Fix any errors you encounter.
+
+Evidencing:
+
+1. Add a screenshot of the output of the unit tests. If any failed, add a screenshot of the error message and a screenshot after you have fixed the errors:
+![Unit tests](images/unit-tests-display.png)
+
+![img_11.png](img_11.png)
+![img_13.png](img_13.png)
+
+test_display_issue_1: name of attributes - not match; name of "car_park" not defined
+test_display_update_1: update display_id to id in display.py; update the setUp method
+
+![img_14.png](img_14.png)
+
+test_display_issue_2: failed to update the display message from "Welcome to the car park" to "Goodbye"
+test_display_update_2: modified update method with setattr function (which sets the value of the attribute of an object)
+
+Reference: https://www.programiz.com/python-programming/methods/built-in/setattr
+
+![img_15.png](img_15.png)
+
+2. Commit your changes to the local repository. Tag the commit with s7 so your lecturer can find it.
+
+3. Push the tag to the remote repository.
 
 git push --tags
 
