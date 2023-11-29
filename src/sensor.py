@@ -16,10 +16,10 @@ class Sensor(ABC):
 
     def detect_vehicle(self):  # scan plate and notify car park
         plate = self._scan_plate()
-        self.update_carpark(plate)
+        self.update_car_park(plate)
 
     @abstractmethod
-    def update_carpark(self, plate):  # will be implemented in subclass EntrySensor and Exit Sensor
+    def update_car_park(self, plate):  # will be implemented in subclass EntrySensor and Exit Sensor
         pass
 
     def _scan_plate(self):  # underscore leading - private method - implement internal only within this class
@@ -27,13 +27,13 @@ class Sensor(ABC):
 
 
 class EntrySensor(Sensor):
-    def update_carpark(self, plate):
+    def update_car_park(self, plate):
         self.car_park.add_car(plate)  # update car park, car enters car park
         print(f"Incoming 🚘 vehicle detected. Plate: {plate}")
 
 
 class ExitSensor(Sensor):
-    def update_carpark(self, plate):
+    def update_car_park(self, plate):
         self.car_park.remove_car(plate)  # update car park, car exits car park
         print(f"Outgoing 🚗 vehicle detected. Plate: {plate}")
 
