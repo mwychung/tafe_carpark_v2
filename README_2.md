@@ -1,5 +1,8 @@
 # Assessment Task: Object-Oriented Programming - Carpark System
 
+
+![Image of a modern car park](images/new_car_park.png)
+
 ## Overview
 
 In this assessment, you are required to design and implement a simplified carpark system using Object-Oriented Programming (OOP) concepts in Python. The system will consist of a Carpark, Sensors, and Displays to track the cars entering and exiting and the availability of parking bays.
@@ -145,19 +148,18 @@ Include a screenshot of your GitHub repository **after** you have pushed your in
 
 ```text
 ![Initial commit](images/mu_image.png)
-![img.png](img.png)
 ```
-
+![img.png](img.png)
 ### Identify classes, methods, and attributes
 
 After reading the task requirements, you should be able to identify the classes, methods, and attributes required for the Carpark system. Complete the following table with the classes, methods, and attributes you will need to implement.
 
-| Class Name | Attributes | Methods |
-| ---------- | ---------- | ------- |
-| `Carpark`    |            |         |
-| `Sensor`     |            |         |
-| `Display`    |            |         |
-| `Config`     |            |         |
+| Class Name | Attributes                  | Methods                         |
+| ---------- |-----------------------------|---------------------------------|
+| `Carpark`    | location, capacity          | register, add_car, remove_car   |
+| `Sensor`     | sensor_id, sensor_is_active | detect_vehicle, update_car_park |
+| `Display`    | id, message, is_on          | update, `__str__`                 |
+| `Config`     |                             |                                 |
 
 **Evidencing:**
 Ensure that you have completed the previous table and include at least two methods, and two attributes for each.
@@ -183,11 +185,11 @@ Ensure that you have completed the previous table and include at least two metho
 
 **Evidencing:**
 Include a screenshot of your GitHub repository `src/` directory **after** you have pushed your changes
-![img_1.png](img_1.png)
+
 ```text
 ![Added stubs for classes](images/stubs-for-classes.png)
 ```
-
+![img_1.png](img_1.png)
 ### Add constructors and attributes to the classes
 
 #### Carpark class
@@ -290,8 +292,8 @@ Ensure that you have completed the previous steps and created the appropriate ta
 [student@workstation ipriot-carpark-prj]$ git tag
 s1
 s2
-![img_2.png](img_2.png)
 ```
+![img_2.png](img_2.png)
 
 ### Relate the classes
 
@@ -451,8 +453,11 @@ You may want to see the number of available bays, the current temperature, and t
 Now consider, between the `Carpark`, `Sensor`, and `Display` classes, which class is responsible for each of these pieces of information? There's no right or wrong answer here. But you should be able to justify your answer.
 
 Q. Which class is responsible for the number of available bays (and why)?
+A. Carpark class: the number of available bay directly links to the status of car park and its capacity
 Q. Which class is responsible for the current temperature (and why)?
+A. Display class: the current temperature is presented on the display to users
 Q. Which class is responsible for the time (and why)?
+A. Carpark class: time is essential component to manage the status of car park. Even though it is one of the context information showing on display, Carpark class should hold the main responsibility for time.
 
 --------
 
@@ -522,27 +527,32 @@ Add a screenshot of the GitHub repository after pushing the tag, showing the Car
 
 ```text
 ![Added methods to the carpark class](images/methods-to-carpark.png)
-![img_5.png](img_5.png)
+
 ```
+![img_5.png](img_5.png)
+
 
 Answer the following questions:
 
 ```text
    1. Which class is responsible for each of the following pieces of information (and why)?
       - The number of available bays
-      Carpark class is responsible for the number of available bays as its calculation is based on the carpark capacity and the current number of car in carpark.
+      Carpark class: the number of available bay directly links to the status of car park and its capacity
       
       - The current temperature
-      Depends
-      to be updated 
+      Display class: the current temperature is presented on the display to users
       
       - The time
-      Carpark class can hold the responsible for the time by import time in carpark.py.
-      (reference:https://www.programiz.com/python-programming/time)
+      Carpark class: time is essential component to manage the status of car park. Even though it is one of the context information showing on display, Carpark class should hold the main responsibility for time.
+      (reference related to time in python: https://www.programiz.com/python-programming/time)
+      
    2. What is the difference between an attribute and a property?
-        to be updated
+      Attributes are variables that are inherited a class or instance of that class, representing information or character of class or instance of that class. 
+      Property is a special type of attribute that associates three methods: getter, setter and deleter. Property provides way to add custom behaviour and access control to attribute without modify data directly.
+      
    3. Why do you think we used a dictionary to hold the data we passed the display? List at least one advantage and one disadvantage of this approach
-        to be updated
+      Using dictionary to hold the data we passed the display is flexible. Car park management team can add, modify or remove data field on display easily. 
+      Comparing with using dictionary and class/ object, dictionary is less structure than class/ object and has more potential errors.
 
 ```
 
@@ -655,8 +665,11 @@ Probably a good idea to commit to GitHub now:
    ```
 ![img_6.png](img_6.png)
 -----------
-Taking stock
+### Taking stock
+
 Let's take stock of what we've done up till now. Diagrammatically, here is a representation of all the classes, methods, and attributes we have implemented so far in the project:
+
+```mermaid
 classDiagram
     class CarPark {
         -location: string
@@ -709,15 +722,19 @@ classDiagram
     Sensor <|-- EntrySensor
     Sensor <|-- ExitSensor 
 
+```
 
 Take a moment to review the diagram and ensure you have implemented the classes, methods, and attributes correctly. You're about to find out if you haven't!
 
-Implement unit tests
+### Implement unit tests
+
 The first set of unit tests are given to you below. We use the unittest module to create unit tests. The unittest module provides a base class, TestCase, which we can use to create test cases. We can then use the assert methods to test the behaviour of our classes.
 
-CarPark unit tests
-The following unit tests test the CarPark class. They test the __init__ method, the add_car method, and the remove_car method. Notice that we use the setUp method to create a CarPark object before each test. This ensures that each test starts with a fresh CarPark object.
+#### CarPark unit tests
 
+The following unit tests test the `CarPark` class. They test the `__init__` method, the `add_car` method, and the `remove_car` method. Notice that we use the `setUp` method to create a `CarPark` object before each test. This ensures that each test starts with a fresh `CarPark` object.
+
+```python
 import unittest
 from car_park import CarPark
 
@@ -765,22 +782,26 @@ class TestCarPark(unittest.TestCase):
 if __name__ == "__main__":
    unittest.main()
 
-Create or open the Python file in the tests directory called test_car_park.py and paste the contents of the previous unit test into it.
+```
 
-Commit your changes to the local repository. Do not tag the commit. It is an interim commit.
+1. Create or open the Python file in the `tests` directory called `test_car_park.py` and paste the contents of the previous unit test into it.
+2. Commit your changes to the local repository. Do not tag the commit. It is an interim commit.
 
-git add .
-git commit -m "Added unit tests for the car park class"
-Run the above unit tests in PyCharm.
+   ```bash
+   git add .
+   git commit -m "Added unit tests for the car park class"
+   ```
 
-Fix any errors you encounter.
+3. Run the above unit tests in PyCharm.
+4. Fix any errors you encounter.
 
-Evidencing:
+**Evidencing:**
 
-Add a screenshot of the output of the unit tests. If any failed, add a screenshot of the error message and a screenshot after you have fixed the errors:
+1. Add a screenshot of the output of the unit tests. If any failed, add a screenshot of the error message and a screenshot after you have fixed the errors:
 
-![Unit tests](images/unit-tests.png)
-
+   ```markdown
+   ![Unit tests](images/unit-tests.png)
+   ```
 Run first unit test:
 ![img_7.png](img_7.png)
 
@@ -794,57 +815,64 @@ test_car_park_issue_2: Circular import error has been removed; There is an error
 test_car_park_update_2: Add else condition (raise ValueError) under remove_car.
 ![img_9.png](img_9.png)
 
-Commit your changes to the local repository. Tag the commit with s6 so your lecturer can find it:
+2. Commit your changes to the local repository. Tag the commit with `s6` so your lecturer can find it:
+3. Push the tag to the remote repository:
 
-Push the tag to the remote repository:
+   ```bash
+   git push --tags
+   ```
 
-git push --tags
+### Display unit tests
 
-Display unit tests
-Next, we'll create tests for the Display class. These tests will test the __init__ method and the update method.
+Next, we'll create tests for the `Display` class. These tests will test the `__init__` method and the `update` method.
 
-1. In the tests/ directory, create a new Python file called test_display.py. Notice that tests are usually suffixed or prefixed with test. Typically, a unit applies to a class. So the unit tests for the Display class are in the test_display.py file.
-
+1. In the tests/ directory, create a new Python file called `test_display.py`. Notice that tests are usually suffixed or prefixed with `test`. Typically, a unit applies to a class. So the unit tests for the `Display` class are in the `test_display.py` file.
 2. Add the following import statement to the top of the file:
 
-import unittest
-from display import Display
-from car_park import CarPark
+   ```python
+   import unittest
+   from display import Display
+   from car_park import CarPark
+   ```
 
-3. Create a TestDisplay class that inherits from unittest.TestCase.
+3. Create a `TestDisplay` class that inherits from `unittest.TestCase`.
+4. Create a `setUp` method that creates a `Display` object and a `CarPark` object. The `Display` object should have the following attributes:
+   - `id`: 1
+   - `message`: "Welcome to the car park"
+   - `is_on`: True
+   - `car_park`: CarPark(...)
 
-4. Create a setUp method that creates a Display object and a CarPark object. The Display object should have the following attributes:
+5. Create a `test_display_initialized_with_all_attributes` method. This method should test that the `Display` object was initialized with the correct attributes. Here is a sample implementation:
 
-id: 1
-message: "Welcome to the car park"
-is_on: True
-car_park: CarPark(...)
+   ```python
+   # ... inside the TestDisplay class
+   def test_display_initialized_with_all_attributes(self):
+      self.assertIsInstance(self.display, Display)
+      self.assertEqual(self.display.id, 1)
+      self.assertEqual(self.display.message, "Welcome to the car park")
+      self.assertEqual(self.display.is_on, True)
+      self.assertIsInstance(self.display.car_park, CarPark)
+   ```
 
-5. Create a test_display_initialized_with_all_attributes method. This method should test that the Display object was initialized with the correct attributes. Here is a sample implementation:
+6. Now create a `test_update` method. This method should test that the `update` method updates the `message` attribute. Here is a sample implementation:
 
-# ... inside the TestDisplay class
-def test_display_initialized_with_all_attributes(self):
-   self.assertIsInstance(self.display, Display)
-   self.assertEqual(self.display.id, 1)
-   self.assertEqual(self.display.message, "Welcome to the car park")
-   self.assertEqual(self.display.is_on, True)
-   self.assertIsInstance(self.display.car_park, CarPark)
-
-6.  Now create a test_update method. This method should test that the update method updates the message attribute. Here is a sample implementation:
-
-# ... inside the TestDisplay class
-def test_update(self):
-   self.display.update({"message": "Goodbye"})
-   self.assertEqual(self.display.message, "Goodbye")
+   ```python
+   # ... inside the TestDisplay class
+   def test_update(self):
+      self.display.update({"message": "Goodbye"})
+      self.assertEqual(self.display.message, "Goodbye")
+   ```
 
 7. Run the unit test in PyCharm.
-
 8. Fix any errors you encounter.
 
-Evidencing:
+**Evidencing:**
 
 1. Add a screenshot of the output of the unit tests. If any failed, add a screenshot of the error message and a screenshot after you have fixed the errors:
-![Unit tests](images/unit-tests-display.png)
+
+   ```markdown
+   ![Unit tests](images/unit-tests-display.png)
+   ```
 
 ![img_11.png](img_11.png)
 ![img_13.png](img_13.png)
@@ -861,26 +889,45 @@ Reference: https://www.programiz.com/python-programming/methods/built-in/setattr
 
 ![img_15.png](img_15.png)
 
-2. Commit your changes to the local repository. Tag the commit with s7 so your lecturer can find it.
-
+2. Commit your changes to the local repository. Tag the commit with `s7` so your lecturer can find it.
 3. Push the tag to the remote repository.
 
-git push --tags
+   ```bash
+   git push --tags
+   ```
 
-Sensor unit tests
-Finally, we'll create tests for the Sensor class. These tests will test the __init__ method and the detect_vehicle method. Implement at least two relevant unit tests.
+### Sensor unit tests
 
-Test the car park register method
-The car park register method should accept a Sensor or Display object. It should raise a TypeError if the object is neither a Sensor nor a Display. Before proceeding, think about where you would test this behaviour. Should you test it in the CarPark unit tests or the Sensor unit tests? Why?
+Finally, we'll create tests for the `Sensor` class. These tests will test the `__init__` method and the `detect_vehicle` method. Implement at least two relevant unit tests.
 
-Answer here...
+Added 4 Sensor unit tests:
+![img_19.png](img_19.png)
 
-Create a new unit test in the test_car_park.py file called test_register_raises_type_error. This test should create a CarPark object and a str object. It should then call the register method on the CarPark object with the str object as a parameter. The test should assert that a TypeError is raised. Here is a sample implementation:
 
+### Test the car park register method
+
+The car park register method should accept a `Sensor` or `Display` object. It should raise a `TypeError` if the object is neither a `Sensor` nor a `Display`. Before proceeding, think about where you would test this behaviour. Should you test it in the `CarPark` unit tests or the `Sensor` unit tests? Why?
+
+> It should be tested in CarPark unit test. Register method is method of Carpark class and it is responsible to register sensor or display within car park.
+
+Create a new unit test in the `test_car_park.py` file called `test_register_raises_type_error`. This test should create a `CarPark` object and a `str` object. It should then call the `register` method on the `CarPark` object with the `str` object as a parameter. The test should assert that a `TypeError` is raised. Here is a sample implementation:
+
+```python
 # ... inside the TestCarPark class
 with self.assertRaises(TypeError):
    self.car_park.register("Not a Sensor or Display")
-Evidencing:
-![img_10.png](img_10.png)
+```
 
-Commit your original test cases for the sensor class to the local repository. Tag the commit with s8 so your lecturer can find it.
+
+
+
+**Evidencing:**
+
+Commit your original test cases for the sensor class to the local repository. Tag the commit with `s8` so your lecturer can find it.
+![img_10.png](img_10.png)
+![img_16.png](img_16.png)
+![img_17.png](img_17.png)
+
+--------
+
+![Image of a car park on the moon](images/moon_park.png)
