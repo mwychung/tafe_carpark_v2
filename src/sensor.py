@@ -38,4 +38,5 @@ class ExitSensor(Sensor):
         print(f"Outgoing 🚗 vehicle detected. Plate: {plate}")
 
     def _scan_plate(self):  # override the _scan_plate method
+        # Fudge: just so we can demonstrate scan on exit
         return random.choice(self.car_park.plates)
