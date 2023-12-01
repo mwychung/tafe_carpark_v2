@@ -1,11 +1,14 @@
 from sensor import Sensor
 from display import Display
 import time
+from pathlib import Path
+import json
 
 
 class CarPark:
 
-    def __init__(self, location="Unknown", capacity=0, current_vehicle_count=0, sensors=None, displays=None,
+    def __init__(self, location="Unknown", capacity=0, log_file='log.txt', current_vehicle_count=0, sensors=None,
+                 displays=None,
                  plates=None):
         self.location = location
         self.capacity = capacity
@@ -13,13 +16,17 @@ class CarPark:
         self.sensors = sensors or []
         self.displays = displays or []
         self.plates = plates or []  # list to store detected car plates
+        self.log_file = Path(log_file)  # convert file name to oath and create it
+        if not self.log_file.exists():
+            self.log_file.touch()
+
 
     def __str__(self):
         return f"Car park at {self.location}, with {self.capacity} bays."
 
     def register(self, component):  # allow the car park to register sensors and displays
         if not isinstance(component, (Sensor, Display)):
-                raise TypeError("Object must be a Sensor or Display")
+            raise TypeError("Object must be a Sensor or Display")
 
         if isinstance(component, Sensor):
             self.sensors.append(component)  # register to sensor list if it is sensor object
