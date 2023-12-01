@@ -2,23 +2,23 @@ from sensor import Sensor
 from display import Display
 import time
 from pathlib import Path
+from datetime import datetime # we'll use this to timestamp entries
 import json
 
 
 class CarPark:
 
-    def __init__(self, location="Unknown", capacity=0, log_file='log.txt', current_vehicle_count=0, sensors=None,
-                 displays=None,
-                 plates=None):
+    def __init__(self, location="Unknown", capacity=0, current_vehicle_count=0, sensors=None,
+                 displays=None, plates=None, log_file=Path("log.txt")):
         self.location = location
         self.capacity = capacity
         self.current_vehicle_count = current_vehicle_count
         self.sensors = sensors or []
         self.displays = displays or []
         self.plates = plates or []  # list to store detected car plates
-        self.log_file = Path(log_file)  # convert file name to oath and create it
-        if not self.log_file.exists():
-            self.log_file.touch()
+        self.log_file = log_file if isinstance(log_file, Path) else Path(log_file)
+        # create the file if it doesn't exist:
+        self.log_file.touch(exist_ok=True)
 
 
     def __str__(self):
@@ -37,12 +37,14 @@ class CarPark:
         # add car to car park, record the plate number and update the displays
         self.plates.append(plate)
         self.update_displays()
+        self._log_car_activity(plate, "entered")
 
     def remove_car(self, plate):
         # remove car in car park, remove the plate number and update the displays
         if plate in self.plates:
             self.plates.remove(plate)
             self.update_displays()
+            self._log_car_activity(plate, "exited")
         else:
             raise ValueError(f"Car plate {plate} does not exist.")
 
@@ -61,3 +63,10 @@ class CarPark:
         return max(0, self.capacity - len(self.plates))
     # max capacity minus current number of cars in car_park
     # if the number of plates exceeds the capacity, will return 0
+
+
+    def _log_car_activity(self, plate, action):
+        with self.log_file.open("a") as f:
+            f.write(f"{plate} {action} at {datetime.now():%Y-%m-%d %H:%M:%S}\n")
+
+
