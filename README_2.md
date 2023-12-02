@@ -158,8 +158,8 @@ After reading the task requirements, you should be able to identify the classes,
 | ---------- |-----------------------------|---------------------------------|
 | `Carpark`    | location, capacity          | register, add_car, remove_car   |
 | `Sensor`     | sensor_id, sensor_is_active | detect_vehicle, update_car_park |
-| `Display`    | id, message, is_on          | update, `__str__`                 |
-| `Config`     |                             |                                 |
+| `Display`    | id, message, is_on          | update, `__str__`               |
+| `Config`     | removed this class          | removed this class              |
 
 **Evidencing:**
 Ensure that you have completed the previous table and include at least two methods, and two attributes for each.
@@ -1161,6 +1161,8 @@ After you have merged your branch to main, push to your remote with the s10 tag.
 ```markdown
 ![Added methods to the car park class](images/methods-to-car-park.png)
 ```
+![img_22.png](img_22.png)
+![img_21.png](img_21.png)
 
 ### Final step: build a car park!
 
@@ -1198,6 +1200,7 @@ In your final submission you need to include any files you have created or modif
    ```markdown
    ![Main.py output](images/main-py.png)
    ```
+![img_23.png](img_23.png)
 
 2. Commit your changes to the local repository. Tag the commit with `v1` so your lecturer can find it. Ensure the commit includes the log file and config file (though you would typically ignore them).
 3. Push the tag to the remote repository.
