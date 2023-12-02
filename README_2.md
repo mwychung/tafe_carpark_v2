@@ -1098,6 +1098,7 @@ Let's now implement the functionality to make the unit tests pass (if you have w
       with self.log_file.open("a") as f:
          f.write(f"{plate} {action} at {datetime.now()}\n")
    ```
+   ![img_20.png](img_20.png)
 
 #### Store the configuration of a car park in a file called `config.json`
 

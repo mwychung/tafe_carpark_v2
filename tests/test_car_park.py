@@ -1,6 +1,7 @@
 import unittest
 from car_park import CarPark
 from pathlib import Path
+import json
 
 
 
@@ -81,6 +82,20 @@ class TestCarPark(unittest.TestCase):
         self.assertIn("NEW-001", last_line)  # check plate entered
         self.assertIn("exited", last_line)  # check description
         self.assertIn("\n", last_line)  # check entry has a new line
+
+    def test_car_park_initialized_with_write_config_file_and_from_config_file(self):
+        config_file_path = "sample_config.json"
+        self.car_park.write_config(config_file=Path(config_file_path))
+
+        # from_config (@staticmethod) belongs to CarPark class, not object of class
+        # create new object from config file
+        new_car_park = CarPark.from_config(config_file=Path(config_file_path))
+
+        self.assertIsInstance(new_car_park, CarPark)
+        self.assertEqual(new_car_park.location, "123 Example Street")
+        self.assertEqual(new_car_park.capacity, 100)
+        self.assertEqual(new_car_park.log_file, Path("log.txt"))
+
 
 if __name__ == "__main__":
     unittest.main()
