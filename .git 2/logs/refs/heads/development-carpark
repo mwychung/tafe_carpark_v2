@@ -1,0 +1,19 @@
+0000000000000000000000000000000000000000 78a9cc7863ed26228e2e787eb166e7128b90478d Maggie Chung <yin2154@hotmail.com> 1700145346 +0800	branch: Created from HEAD
+78a9cc7863ed26228e2e787eb166e7128b90478d cd4be2540a61e312d85d24fbe939be93157ab000 Maggie Chung <yin2154@hotmail.com> 1700146771 +0800	commit: Initial commit
+cd4be2540a61e312d85d24fbe939be93157ab000 2d95abd0618b8783c6360804b770addc553d1b46 Maggie Chung <yin2154@hotmail.com> 1700150438 +0800	commit: Added constructors and attributes to the carpark class and Update Readme
+2d95abd0618b8783c6360804b770addc553d1b46 00aeeb4bbd8b5e918fe7283b752e2956439c3e60 Maggie Chung <yin2154@hotmail.com> 1700196024 +0800	commit: Added stubs for classes
+00aeeb4bbd8b5e918fe7283b752e2956439c3e60 3f2dbe50adadbe757ccf9421a232f47116dcc5a3 Maggie Chung <yin2154@hotmail.com> 1700233736 +0800	commit: Added constructors and attributes to the display and sensor classes
+3f2dbe50adadbe757ccf9421a232f47116dcc5a3 1c12330014277ea1553af4e8e6e371f6b318b79e Maggie Chung <yin2154@hotmail.com> 1700490650 +0800	commit: dded constructors and attributes to the display and sensor classes
+1c12330014277ea1553af4e8e6e371f6b318b79e 6b07c1a26b24ac9f2099ba68575ab18978a87bde Maggie Chung <yin2154@hotmail.com> 1700547042 +0800	commit: Added a register method to the carpark class
+6b07c1a26b24ac9f2099ba68575ab18978a87bde 2302af73a43946efd25793882bd1975f8d5dc35e Maggie Chung <yin2154@hotmail.com> 1700551304 +0800	commit: Added methods to the carpark class
+2302af73a43946efd25793882bd1975f8d5dc35e cf9b58e5454941b99415aa5f6d22e83690cb906d Maggie Chung <yin2154@hotmail.com> 1700574709 +0800	commit: Updated data dict
+cf9b58e5454941b99415aa5f6d22e83690cb906d 426c724305b64cca9e0d916ff0d2cec8e3e833f1 Maggie Chung <yin2154@hotmail.com> 1700581658 +0800	commit: Created core methods for the classes
+426c724305b64cca9e0d916ff0d2cec8e3e833f1 fe38102945299154aaeaa8943a17174eb46788de Maggie Chung <yin2154@hotmail.com> 1700727417 +0800	commit: rename carpark.py to car_park.py and modified other code related to this change
+fe38102945299154aaeaa8943a17174eb46788de a512d02087ea96c5955f7aa51df95545dd9806c8 Maggie Chung <yin2154@hotmail.com> 1700727511 +0800	commit: Added unit tests for the car park class
+a512d02087ea96c5955f7aa51df95545dd9806c8 516d1d854ed6ad88061c3e4cff6aa49377477c13 Maggie Chung <yin2154@hotmail.com> 1700748062 +0800	commit: Remove circular import and raise ValueError to fix issue in Unit Test
+516d1d854ed6ad88061c3e4cff6aa49377477c13 baa7281e83e62d79e8aaecad672790bf48f48ef5 Maggie Chung <yin2154@hotmail.com> 1701151730 +0800	commit: Added Sensor Unit Tests in TestCarPark class
+baa7281e83e62d79e8aaecad672790bf48f48ef5 d5b56d5f5481e317500e7c71bd47b4c5bd6a7072 Maggie Chung <yin2154@hotmail.com> 1701192326 +0800	commit: Added unit tests for the display class
+d5b56d5f5481e317500e7c71bd47b4c5bd6a7072 c2638b27ad57d30c01bb621994c2d1414512acd2 Maggie Chung <yin2154@hotmail.com> 1701248545 +0800	commit: modified register method and updated_car_park method
+c2638b27ad57d30c01bb621994c2d1414512acd2 9643d3852b744f18c957c6c34f7b48b82fcff732 Maggie Chung <yin2154@hotmail.com> 1701353831 +0800	commit: Added Sensor unit tests and car park register method - Updated
+9643d3852b744f18c957c6c34f7b48b82fcff732 abed5947459a92448d0c993674bcd639e6a6118f Maggie Chung <yin2154@hotmail.com> 1701362592 +0800	commit: Updated README_2 with Q&A sections and screenshots
+abed5947459a92448d0c993674bcd639e6a6118f 9e07d6028f2f6e2634d089995c1eb7a1aef847a3 Maggie Chung <yin2154@hotmail.com> 1701437191 +0800	commit: Updated README.md - TDD

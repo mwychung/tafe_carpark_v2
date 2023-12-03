@@ -1,0 +1,3 @@
+0000000000000000000000000000000000000000 1e545d7c52e0fe565ccbab0f32027da840b147cf Maggie Chung <yin2154@hotmail.com> 1701437753 +0800	branch: Created from HEAD
+1e545d7c52e0fe565ccbab0f32027da840b147cf 9cc38074f203e7607345ae361afde384e1108286 Maggie Chung <yin2154@hotmail.com> 1701439386 +0800	commit: Added unit tests for logging car activity
+9cc38074f203e7607345ae361afde384e1108286 fec0e1f2c0e583457ca2cb3945d37b2b10d1edaa Maggie Chung <yin2154@hotmail.com> 1701446257 +0800	commit: Added log.txt for car entering and leaving and Added Unit tests for log file
