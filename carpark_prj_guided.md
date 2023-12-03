@@ -1223,6 +1223,10 @@ In your final submission you need to include any files you have created or modif
    ![Publish a release](images/publish-release.png)
    ```
 
+![create-release.png](images%2Fcreate-release.png)
+
+![publish-release.png](images%2Fpublish-release.png)
+
 5. Congratulations! You have completed the project. You can now submit the project via Blackboard. Take the time to reflect on your work and write any notes and observations down.
 
 --------
