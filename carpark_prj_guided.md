@@ -149,7 +149,7 @@ Include a screenshot of your GitHub repository **after** you have pushed your in
 ```text
 ![Initial commit](images/mu_image.png)
 ```
-![img.png](img.png)
+![mu_image.png](images%2Fmu_image.png)
 ### Identify classes, methods, and attributes
 
 After reading the task requirements, you should be able to identify the classes, methods, and attributes required for the Carpark system. Complete the following table with the classes, methods, and attributes you will need to implement.
@@ -189,7 +189,8 @@ Include a screenshot of your GitHub repository `src/` directory **after** you ha
 ```text
 ![Added stubs for classes](images/stubs-for-classes.png)
 ```
-![img_1.png](img_1.png)
+![stubs-for-classes.png](images%2Fstubs-for-classes.png)
+
 ### Add constructors and attributes to the classes
 
 #### Carpark class
@@ -293,7 +294,8 @@ Ensure that you have completed the previous steps and created the appropriate ta
 s1
 s2
 ```
-![img_2.png](img_2.png)
+![git_tag_s1.png](images%2Fgit_tag_s1.png)
+![git_tag_s2.png](images%2Fgit_tag_s2.png)
 
 ### Relate the classes
 
@@ -423,7 +425,8 @@ After you have implemented the required code, commit your changes to the local r
    git commit -m "Added a register method to the carpark class"
    git tag -a "s3" -m "Added a register method to the carpark class"
    ```
-![img_4.png](img_4.png)
+
+![added-register-method.png](images%2Fadded-register-method.png)
 
 #### Add and remove car methods
 
@@ -529,8 +532,7 @@ Add a screenshot of the GitHub repository after pushing the tag, showing the Car
 ![Added methods to the carpark class](images/methods-to-carpark.png)
 
 ```
-![img_5.png](img_5.png)
-
+![methods-to-carpark.png](images%2Fmethods-to-carpark.png)
 
 Answer the following questions:
 
@@ -663,7 +665,7 @@ Probably a good idea to commit to GitHub now:
    ```bash
    git push --tags
    ```
-![img_6.png](img_6.png)
+![core-methods.png](images%2Fcore-methods.png)
 -----------
 ### Taking stock
 
@@ -803,18 +805,17 @@ if __name__ == "__main__":
    ![Unit tests](images/unit-tests.png)
    ```
 Run first unit test:
-![img_7.png](img_7.png)
-
+![unit-tests-1.png](images%2Funit-tests-1.png)
 test_car_park_issue_1: Circular import creates an issue
 test_car_park_update_1: "from car_park import CarPark" in sensor.py and display.py are removed
 
 Run second unit test:
-![img_8.png](img_8.png)
+![unit-tests-2.png](images%2Funit-tests-2.png)
 
 test_car_park_issue_2: Circular import error has been removed; There is an error for testing the test_removing_a_car_that_does_not_exist
 test_car_park_update_2: Add else condition (raise ValueError) under remove_car.
-![img_9.png](img_9.png)
 
+![unit-tests-3.png](images%2Funit-tests-3.png)
 2. Commit your changes to the local repository. Tag the commit with `s6` so your lecturer can find it:
 3. Push the tag to the remote repository:
 
@@ -874,20 +875,21 @@ Next, we'll create tests for the `Display` class. These tests will test the `__i
    ![Unit tests](images/unit-tests-display.png)
    ```
 
-![img_11.png](img_11.png)
-![img_13.png](img_13.png)
+![unit-tests-display-1.png](images%2Funit-tests-display-1.png)
+
+![unit-tests-display-2.png](images%2Funit-tests-display-2.png)
 
 test_display_issue_1: name of attributes - not match; name of "car_park" not defined
 test_display_update_1: update display_id to id in display.py; update the setUp method
 
-![img_14.png](img_14.png)
+![unit-tests-display-3.png](images%2Funit-tests-display-3.png)
 
 test_display_issue_2: failed to update the display message from "Welcome to the car park" to "Goodbye"
 test_display_update_2: modified update method with setattr function (which sets the value of the attribute of an object)
 
-Reference: https://www.programiz.com/python-programming/methods/built-in/setattr
+(Reference: https://www.programiz.com/python-programming/methods/built-in/setattr)
 
-![img_15.png](img_15.png)
+![unit-tests-display-4.png](images%2Funit-tests-display-4.png)
 
 2. Commit your changes to the local repository. Tag the commit with `s7` so your lecturer can find it.
 3. Push the tag to the remote repository.
@@ -901,8 +903,7 @@ Reference: https://www.programiz.com/python-programming/methods/built-in/setattr
 Finally, we'll create tests for the `Sensor` class. These tests will test the `__init__` method and the `detect_vehicle` method. Implement at least two relevant unit tests.
 
 Added 4 Sensor unit tests:
-![img_19.png](img_19.png)
-
+![unit-tests-sensor-1.png](images%2Funit-tests-sensor-1.png)
 
 ### Test the car park register method
 
@@ -924,10 +925,11 @@ with self.assertRaises(TypeError):
 **Evidencing:**
 
 Commit your original test cases for the sensor class to the local repository. Tag the commit with `s8` so your lecturer can find it.
-![img_10.png](img_10.png)
-![img_16.png](img_16.png)
-![img_17.png](img_17.png)
+![unit-tests-sensor-2.png](images%2Funit-tests-sensor-2.png)
 
+![unit-tests-sensor-3.png](images%2Funit-tests-sensor-3.png)
+
+![unit-tests-sensor-4.png](images%2Funit-tests-sensor-4.png)
 --------
 
 ### Additional functionality: TDD
@@ -1098,7 +1100,7 @@ Let's now implement the functionality to make the unit tests pass (if you have w
       with self.log_file.open("a") as f:
          f.write(f"{plate} {action} at {datetime.now()}\n")
    ```
-   ![img_20.png](img_20.png)
+   ![log-file.png](images%2Flog-file.png)
 
 #### Store the configuration of a car park in a file called `config.json`
 
@@ -1161,8 +1163,10 @@ After you have merged your branch to main, push to your remote with the s10 tag.
 ```markdown
 ![Added methods to the car park class](images/methods-to-car-park.png)
 ```
-![img_22.png](img_22.png)
-![img_21.png](img_21.png)
+
+![methods-to-car-park-1.png](images%2Fmethods-to-car-park-1.png)
+![methods-to-car-park-2.png](images%2Fmethods-to-car-park-2.png)
+
 
 ### Final step: build a car park!
 
@@ -1200,10 +1204,12 @@ In your final submission you need to include any files you have created or modif
    ```markdown
    ![Main.py output](images/main-py.png)
    ```
-![img_23.png](img_23.png)
+![main-py-1.png](images%2Fmain-py-1.png)
 
 2. Commit your changes to the local repository. Tag the commit with `v1` so your lecturer can find it. Ensure the commit includes the log file and config file (though you would typically ignore them).
 3. Push the tag to the remote repository.
+
+
 
    ```bash
    git push --tags
